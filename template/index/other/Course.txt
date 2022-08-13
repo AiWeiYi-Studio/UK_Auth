@@ -1,0 +1,25 @@
+index.php
+里面写好模板代码
+
+正版查询接口
+我们的程序调用的是checkauthurl
+别的授权系统是checkauth
+如果是搬模板需要把这个更换过来
+<?php
+if($url=addslashes($_GET['url'])) {
+	//echo '<label>查询域名:<font color="#FF00FF">'.$url.'</label></font>';
+	//echo '<label>base64:<font color="#FF0000">'.base64_encode($url).'</label></font>';
+	//echo '<label>MD5:<font color="#0000FF">'.MD5($url).'</label></font>';
+	if(checkauthurl($url)) {
+		echo '<div class="alert alert-success"><b>您所查询的网址：<font color="#FF00FF">'.$url.'</b></font><br></br><b>查询结果：<font color="#0000FF">正版程序</b></font></div>';
+	}else{
+		echo '<div class="alert alert-danger"><b>您所查询的网址：<font color="#FF00FF">'.$url.'</b></font><br></br><b>查询结果：<font color="#FF0000">非正版授权</b></font><br></br><a href="http://wpa.qq.com/msgrd?v=3&uin='.$conf['qq'].'&site=qq&menu=yes" class="text-ab"><font color="#00BFFF">不是正版？点击购买正版</a></font></div>';
+	}
+}
+$DB->close();
+?>
+
+
+如果使用自定义模板
+请在此目录放一个演示图片
+并命名为demo.php
